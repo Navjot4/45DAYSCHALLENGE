@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int low=0;
+        int maxProfit=0;
+        for(int i=0;i<prices.size();i++)
+        {
+            if(prices[i]<prices[low])
+            {
+                low=i; //store the index of the element with lowest value
+            }
+            maxProfit=max(maxProfit,prices[i]-prices[low]);//calculate the max difference
+        }
+        return maxProfit;
+    }
+};
