@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int m=matrix.size(); //to find out the row size
+        int n=matrix[0].size(); //to find out column size
+        set<int> setRows; // set to store row-index of the element where element is zero
+        set<int> setColumns; //set to store column-index of the element where element is zero
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(matrix[i][j]==0){
+                    setRows.insert(i);
+                    setColumns.insert(j);
+                }
+            }
+        }
+       for(auto i:setRows){
+            for(int j=0;j<n;j++){
+                matrix[i][j]=0; //targeting a row,make all its column elements zero
+            }
+        }
+        for(auto j:setColumns){
+            for(int i=0;i<m;i++){
+                matrix[i][j]=0;  //targeting a column,make all its row elements zero
+            }
+        }
+    }
+};
